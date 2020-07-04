@@ -1,7 +1,3 @@
-# Awesome Project Build with TypeORM
-
-Steps to run this project:
-
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+# Listen-projeto-de-musica
+Um site para compartilhar músicas criadas por você.
+Tecnologias usadas no backend:NodeJs,Typescript e TypeOrm

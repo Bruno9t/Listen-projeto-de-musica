@@ -4,3 +4,7 @@ node_modules/
 dist/
 tmp/
 temp/
+.env
+
+public/uploads/images/user/*
+!public/uploads/images/user/.gitkeep
