@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt'
 class UserController {
     async create(request:Request,response:Response){
 
-        try{
+    try{
 
         const {
             name,
@@ -17,7 +17,7 @@ class UserController {
             password,
         } = request.body
 
-
+        
 
         const userRepository = getRepository(User)
 

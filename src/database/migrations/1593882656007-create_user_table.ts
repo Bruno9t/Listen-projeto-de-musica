@@ -10,6 +10,7 @@ export class createUserTable1593882656007 implements MigrationInterface {
                     {
                         type:"int",
                         name:"id",
+                        unsigned:true,
                         isPrimary:true,
                         isUnique:true,
                         isNullable:false,
