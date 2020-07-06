@@ -6,6 +6,7 @@ import path from 'path'
 
 import userRoutes from './routes/user'
 import musicRoutes from './routes/music'
+import playlistRoutes from './routes/playlist'
 
 import dbConnection from './database'
 
@@ -25,6 +26,7 @@ app.use(express.json())
 
 app.use(userRoutes)
 app.use(musicRoutes)
+app.use(playlistRoutes)
 
 app.use('/static',express.static(path.resolve(__dirname,'..','public')))
 

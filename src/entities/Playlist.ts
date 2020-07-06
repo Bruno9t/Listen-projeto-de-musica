@@ -18,7 +18,7 @@ class Playlist {
 
     @ManyToMany(()=> Music)
     @JoinTable()
-    musics!:Category[];
+    musics!:Music[];
 
     @Column()
     name!:string;
