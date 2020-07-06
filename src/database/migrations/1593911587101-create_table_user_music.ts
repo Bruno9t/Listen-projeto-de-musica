@@ -14,7 +14,8 @@ export class createTableUserMusic1593911587101 implements MigrationInterface {
                         isPrimary:true,
                         isUnique:true,
                         isGenerated:true,
-                        isNullable:false
+                        isNullable:false,
+                        generationStrategy: 'increment',
                     },
                     {
                         type:"int",
@@ -67,9 +68,8 @@ export class createTableUserMusic1593911587101 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('music_playlist',"user_music")
-        await queryRunner.dropForeignKey('music_playlist',"music_user")
-
+        await queryRunner.dropForeignKey('user_music',"user_music")
+        await queryRunner.dropForeignKey('user_music',"music_user")
         await queryRunner.dropTable("user_music")
     }
 

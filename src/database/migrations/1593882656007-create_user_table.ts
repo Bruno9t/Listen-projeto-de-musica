@@ -14,7 +14,9 @@ export class createUserTable1593882656007 implements MigrationInterface {
                         isPrimary:true,
                         isUnique:true,
                         isNullable:false,
-                        isGenerated:true,
+                        isGenerated: true,
+                        generationStrategy: 'increment',
+                        
                     },
                     {
                         type:"varchar",
@@ -51,7 +53,6 @@ export class createUserTable1593882656007 implements MigrationInterface {
                         type:"varchar",
                         length:"40",
                         name:"user_thumbnail",
-                        isUnique:true
                     },
                     {
                         type:"timestamp",

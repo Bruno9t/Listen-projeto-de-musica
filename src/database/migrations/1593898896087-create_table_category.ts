@@ -15,6 +15,7 @@ export class createTableCategory1593898896087 implements MigrationInterface {
                         isUnique:true,
                         isNullable:false,
                         isGenerated:true,
+                        generationStrategy: 'increment',
                     },
                     {
                         type:"varchar",

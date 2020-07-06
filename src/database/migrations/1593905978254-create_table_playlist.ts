@@ -14,19 +14,24 @@ export class createTablePlaylist1593905978254 implements MigrationInterface {
                         isPrimary:true,
                         isUnique:true,
                         isGenerated:true,
-                        isNullable:false
+                        isNullable:false,
+                        generationStrategy: 'increment',
                     },
                     {
                         type:"int",
                         unsigned:true,
                         name:"category_id",
-                        isNullable:false,
+                        isNullable:true,
                     },
                     {
                         type:"varchar",
                         length:"40",
                         name:"name",
-                        isNullable:false,
+                    },
+                    {
+                        type:"varchar",
+                        length:"40",
+                        name:"playlist_thumbnail",
                     },
                     {
                         type:"boolean",

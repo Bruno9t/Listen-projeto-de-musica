@@ -14,13 +14,14 @@ export class createTableMusic1593900036580 implements MigrationInterface {
                         isPrimary:true,
                         isUnique:true,
                         isGenerated:true,
-                        isNullable:false
+                        isNullable:false,
+                        generationStrategy: 'increment',
                     },
                     {
                         type:"int",
                         unsigned:true,
                         name:"category_id",
-                        isNullable:false,
+                        isNullable:true,
                     },
                     {
                         type:"varchar",

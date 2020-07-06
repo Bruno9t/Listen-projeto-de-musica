@@ -17,7 +17,7 @@ class UserController {
             password,
         } = request.body
 
-        
+    
 
         const userRepository = getRepository(User)
 
@@ -30,6 +30,7 @@ class UserController {
 
         return response.status(200).json(createdUser)
     }catch(err){
+        console.log(err)
         return response.status(401).json({message:'Ocorreu algum erro ao criar sua conta!'})
     }
 
@@ -38,6 +39,16 @@ class UserController {
     store(request:Request,response:Response){
 
         return response.status(200).json({message:'You are logged'})
+    }
+
+    async index(request:Request,resonse:Response){
+
+        const userRepository = getRepository(User)
+
+        const users = await userRepository.find()
+
+        return resonse.status(200).json(users)
+        
     }
 }
 
