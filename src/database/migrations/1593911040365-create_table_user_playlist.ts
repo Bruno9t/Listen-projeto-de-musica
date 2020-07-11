@@ -5,7 +5,7 @@ export class createTableUserPlaylist1593911040365 implements MigrationInterface 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name:"user_playlist",
+                name:"user_playlists_playlist",
                 columns:[
                     {
                         type:"int",
@@ -20,13 +20,13 @@ export class createTableUserPlaylist1593911040365 implements MigrationInterface 
                     {
                         type:"int",
                         unsigned:true,
-                        name:"playlist_id",
+                        name:"playlistId",
                         isNullable:false,
                     },
                     {
                         type:"int",
                         unsigned:true,
-                        name:"user_id",
+                        name:"userId",
                         isNullable:false,
                     },
                     {
@@ -44,10 +44,10 @@ export class createTableUserPlaylist1593911040365 implements MigrationInterface 
         )
 
         await queryRunner.createForeignKey(
-            'user_playlist',
+            'user_playlists_playlist',
             new TableForeignKey({
                 name:"user_playlist",
-                columnNames:["user_id"],
+                columnNames:["userId"],
                 referencedColumnNames:["id"],
                 referencedTableName:"user",
                 onUpdate:"CASCADE",
@@ -55,10 +55,10 @@ export class createTableUserPlaylist1593911040365 implements MigrationInterface 
             })
         )
         await queryRunner.createForeignKey(
-            'user_playlist',
+            'user_playlists_playlist',
             new TableForeignKey({
                 name:"playlist_user",
-                columnNames:["playlist_id"],
+                columnNames:["playlistId"],
                 referencedColumnNames:["id"],
                 referencedTableName:"playlist",
                 onUpdate:"CASCADE",
@@ -68,10 +68,10 @@ export class createTableUserPlaylist1593911040365 implements MigrationInterface 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('user_playlist',"user_playlist")
-        await queryRunner.dropForeignKey('user_playlist',"playlist_user")
+        await queryRunner.dropForeignKey('user_playlists_playlist',"user_playlist")
+        await queryRunner.dropForeignKey('user_playlists_playlist',"playlist_user")
 
-        await queryRunner.dropTable("user_playlist")
+        await queryRunner.dropTable("user_playlists_playlist")
     }
 
 }

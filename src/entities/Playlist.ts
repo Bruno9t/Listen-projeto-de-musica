@@ -1,7 +1,8 @@
-import {Entity,PrimaryGeneratedColumn,CreateDateColumn,Column,ManyToOne, JoinColumn, ManyToMany, JoinTable} from 'typeorm'
+import {Entity,PrimaryGeneratedColumn,CreateDateColumn,Column,ManyToOne, OneToMany,JoinColumn, ManyToMany, JoinTable} from 'typeorm'
 
-import Category from '../entities/Category'
-import Music from '../entities/Music'
+import Category from './Category'
+import Music from './Music'
+import User from './User'
 
 
 @Entity('playlist')
@@ -16,9 +17,13 @@ class Playlist {
     @JoinColumn({name:"category_id",referencedColumnName:"id"})
     category!:Category;
 
-    @ManyToMany(()=> Music)
+    @ManyToMany(()=> Music,music=>music.playlists)
     @JoinTable()
     musics!:Music[];
+
+    @ManyToMany(()=>User,user=>user.playlists)
+    @JoinTable()
+    users!:User[]
 
     @Column()
     name!:string;

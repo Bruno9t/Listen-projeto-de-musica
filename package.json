@@ -7,7 +7,10 @@
       "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/",
       "start": "ts-node src/index.ts",
       "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-      "build": "tsc"
+      "build": "tsc",
+      "seed:create": "ts-node ./node_modules/typeorm/cli.js migration:create -c seed -n ",
+      "seed:run": "ts-node ./node_modules/typeorm/cli.js migration:run -c seed",
+      "seed:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -c seed"
    },
    "keywords": [],
    "author": "",

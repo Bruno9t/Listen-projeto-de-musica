@@ -45,7 +45,7 @@ class UserController {
 
         const userRepository = getRepository(User)
 
-        const users = await userRepository.find()
+        const users = await userRepository.find({relations:["musics","playlists"]})
 
         return resonse.status(200).json(users)
         

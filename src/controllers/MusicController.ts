@@ -40,7 +40,7 @@ class MusicController {
     async index(request:Request,response:Response){
         const musicRepository = getRepository(Music)
 
-        const musics = await musicRepository.find({relations:["category"]})
+        const musics = await musicRepository.find({relations:["category","playlists","users"]})
 
         return response.json(musics)
 

@@ -22,7 +22,7 @@ class PlaylistController {
     async index(request:Request,response:Response){
         const playlistRepository = getRepository(Playlist)
 
-        const playlists = await playlistRepository.find({relations:["musics"]})
+        const playlists = await playlistRepository.find({relations:["musics","users"]})
 
         return response.status(200).json(playlists)
 

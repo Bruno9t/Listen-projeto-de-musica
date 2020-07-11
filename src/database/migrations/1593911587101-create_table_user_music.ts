@@ -5,7 +5,7 @@ export class createTableUserMusic1593911587101 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name:"user_music",
+                name:"user_musics_music",
                 columns:[
                     {
                         type:"int",
@@ -20,13 +20,13 @@ export class createTableUserMusic1593911587101 implements MigrationInterface {
                     {
                         type:"int",
                         unsigned:true,
-                        name:"music_id",
+                        name:"musicId",
                         isNullable:false,
                     },
                     {
                         type:"int",
                         unsigned:true,
-                        name:"user_id",
+                        name:"userId",
                         isNullable:false,
                     },
                     {
@@ -44,10 +44,10 @@ export class createTableUserMusic1593911587101 implements MigrationInterface {
         )
 
         await queryRunner.createForeignKey(
-            'user_music',
+            'user_musics_music',
             new TableForeignKey({
                 name:"user_music",
-                columnNames:["user_id"],
+                columnNames:["userId"],
                 referencedColumnNames:["id"],
                 referencedTableName:"user",
                 onUpdate:"CASCADE",
@@ -55,10 +55,10 @@ export class createTableUserMusic1593911587101 implements MigrationInterface {
             })
         )
         await queryRunner.createForeignKey(
-            'user_music',
+            'user_musics_music',
             new TableForeignKey({
                 name:"music_user",
-                columnNames:["music_id"],
+                columnNames:["musicId"],
                 referencedColumnNames:["id"],
                 referencedTableName:"music",
                 onUpdate:"CASCADE",
@@ -68,9 +68,9 @@ export class createTableUserMusic1593911587101 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('user_music',"user_music")
-        await queryRunner.dropForeignKey('user_music',"music_user")
-        await queryRunner.dropTable("user_music")
+        await queryRunner.dropForeignKey('user_musics_music',"user_music")
+        await queryRunner.dropForeignKey('user_musics_music',"music_user")
+        await queryRunner.dropTable("user_musics_music")
     }
 
 }

@@ -1,4 +1,7 @@
-import {Entity, PrimaryGeneratedColumn,CreateDateColumn,Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn,CreateDateColumn,Column,ManyToMany, JoinTable} from "typeorm";
+
+import Playlist from './Playlist'
+import Music from './Music'
 
 @Entity('user')
 class User {
@@ -23,6 +26,14 @@ class User {
 
     @Column({type:"varchar",length:40,unique:true})
     user_thumbnail?:string;
+
+    @ManyToMany(()=>Playlist,playlist=>playlist.users)
+    @JoinTable()
+    playlists!:Playlist[]
+
+    @ManyToMany(()=>Music,music=>music.users)
+    @JoinTable()
+    musics!:Music[]
 
     @CreateDateColumn({type:"timestamp"})
     created_at!:Date;
