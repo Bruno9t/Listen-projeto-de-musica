@@ -11,6 +11,7 @@ class MusicController {
 
             name,
             category_id,
+            user_id,
             duration,
             artist,
             music_file,
@@ -24,6 +25,7 @@ class MusicController {
         const musicCreated = musicRepository.create({
             name,
             category_id,
+            user_id,
             duration,
             artist,
             music_file,
@@ -40,7 +42,9 @@ class MusicController {
     async index(request:Request,response:Response){
         const musicRepository = getRepository(Music)
 
-        const musics = await musicRepository.find({relations:["category","playlists","users"]})
+        const musics = await musicRepository.find({relations:[
+            "category","add_by_user","playlists","users"
+        ]})
 
         return response.json(musics)
 

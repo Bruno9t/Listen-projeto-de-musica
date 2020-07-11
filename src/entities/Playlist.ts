@@ -13,6 +13,13 @@ class Playlist {
     @Column()
     category_id!:number;
 
+    @Column()
+    user_id!:number;
+
+    @ManyToOne(()=>User)
+    @JoinColumn({name:"user_id",referencedColumnName:"id"})
+    add_by_user!:User;
+
     @ManyToOne(()=>Category)
     @JoinColumn({name:"category_id",referencedColumnName:"id"})
     category!:Category;

@@ -46,7 +46,7 @@ export class createTableMusicPlaylist1593909797204 implements MigrationInterface
         await queryRunner.createForeignKey(
             'playlist_musics_music',
             new TableForeignKey({
-                name:"music_playlist",
+                name:"musicKey",
                 columnNames:["musicId"],
                 referencedColumnNames:["id"],
                 referencedTableName:"music",
@@ -57,7 +57,7 @@ export class createTableMusicPlaylist1593909797204 implements MigrationInterface
         await queryRunner.createForeignKey(
             'playlist_musics_music',
             new TableForeignKey({
-                name:"playlist_music",
+                name:"playlistKey",
                 columnNames:["playlistId"],
                 referencedColumnNames:["id"],
                 referencedTableName:"playlist",
@@ -68,8 +68,8 @@ export class createTableMusicPlaylist1593909797204 implements MigrationInterface
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('playlist_musics_music',"playlist_music")
-        await queryRunner.dropForeignKey('playlist_musics_music',"music_playlist")
+        await queryRunner.dropForeignKey('playlist_musics_music',"playlistKey")
+        await queryRunner.dropForeignKey('playlist_musics_music',"musicKey")
 
         await queryRunner.dropTable("playlist_musics_music")
 

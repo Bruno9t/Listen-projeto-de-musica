@@ -24,6 +24,11 @@ export class createTableMusic1593900036580 implements MigrationInterface {
                         isNullable:true,
                     },
                     {
+                        type:"int",
+                        unsigned:true,
+                        name:"user_id",
+                    },
+                    {
                         type:"varchar",
                         length:"50",
                         name:"name",
@@ -74,7 +79,7 @@ export class createTableMusic1593900036580 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'music',
             new TableForeignKey({
-                name:"music",
+                name:"categoryKey",
                 columnNames:["category_id"],
                 referencedColumnNames:["id"],
                 referencedTableName:"category",
@@ -82,11 +87,24 @@ export class createTableMusic1593900036580 implements MigrationInterface {
                 onDelete:"SET NULL"
             })
         )
+
+        await queryRunner.createForeignKey(
+            'music',
+            new TableForeignKey({
+                name:"userKey",
+                columnNames:["user_id"],
+                referencedColumnNames:["id"],
+                referencedTableName:"user",
+                onUpdate:"CASCADE",
+                onDelete:"CASCADE"
+            })
+        )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         
-        await queryRunner.dropForeignKey('music',"music")
+        await queryRunner.dropForeignKey('music',"categoryKey")
+        await queryRunner.dropForeignKey('music',"userKey")
 
         await queryRunner.dropTable("music")
     }
